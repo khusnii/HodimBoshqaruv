@@ -1,0 +1,22 @@
+﻿@model HomeIndexViewModel;
+
+@{
+    ViewBag.Title = "Staff list";
+}
+
+<div class="card-deck">
+    @foreach (var staff in Model.Staffs)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                <h3>@staff.FirstName @staff.LastName</h3>
+            </div>
+            <img class="card-img-top" src="~/images/lion.png" />
+            <div>
+                <a href=" " class="btn btn-primary">View</a>
+                <a href=" " class="btn btn-primary">Edit</a>
+                <a href=" " class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>
