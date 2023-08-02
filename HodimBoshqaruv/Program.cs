@@ -1,10 +1,14 @@
+using HodimBoshqaruv.DataAccess;
 using HodimBoshqaruv.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IStaffRepository, MockStaffRepository>();
+builder.Services.AddDbContextPool<AppDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("StaffDb")));
 
 var app = builder.Build();
 
