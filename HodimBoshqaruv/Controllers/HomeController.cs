@@ -6,12 +6,10 @@ namespace HodimBoshqaruv.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IStaffRepository staffRepository;
 
-        public HomeController(ILogger<HomeController> logger, IStaffRepository staffRepository)
+        public HomeController(  IStaffRepository staffRepository)
         {
-            _logger = logger;
             this.staffRepository = staffRepository;
         }
 
@@ -36,11 +34,5 @@ namespace HodimBoshqaruv.Controllers
             return View(viewModel);
         }
  
-        public string Staff(int id)
-        {
-            return staffRepository.Get(id)?.FirstName;
-        }
-
-
     }
 }
