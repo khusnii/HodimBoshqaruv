@@ -33,6 +33,24 @@ namespace HodimBoshqaruv.Controllers
             };
             return View(viewModel);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Staff staff)
+        {
+            if(ModelState.IsValid)
+            {
+               Staff newStaff =  staffRepository.Create(staff);
+               return RedirectToAction("details", new {id = newStaff.Id});
+            }
+            else
+                return View();
+         }
  
     }
 }
